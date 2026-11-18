@@ -7,6 +7,7 @@ Each experiment writes one TextGrid per file to outputs/textgrids/<experiment>/<
   arpa_g2p       english_us_arpa + pretrained G2P   english_us_arpa (pretrained)      <- main result
   arpa_own_g2p   english_us_arpa + our own G2P      english_us_arpa (pretrained)
   mfa_g2p        english_mfa + pretrained G2P       english_mfa (pretrained, IPA-style phones)
+  arpa_learner   as arpa_g2p + learner variants      english_us_arpa (pretrained)  (learner_variants.py)
   arpa_adapted   english_us_arpa + pretrained G2P   english_us_arpa adapted to this corpus (mfa adapt)
   scratch        english_us_arpa + pretrained G2P   trained from scratch on this corpus only (mfa train)
 
@@ -30,6 +31,7 @@ EXPERIMENTS = {
     "arpa_g2p": ("align", os.path.join(D, "arpa_pretrained_g2p.dict"), "english_us_arpa"),
     "arpa_own_g2p": ("align", os.path.join(D, "arpa_own_g2p.dict"), "english_us_arpa"),
     "mfa_g2p": ("align", os.path.join(D, "mfa_pretrained_g2p.dict"), "english_mfa"),
+    "arpa_learner": ("align", os.path.join(D, "arpa_learner_variants.dict"), "english_us_arpa"),
     "arpa_adapted": ("adapt", os.path.join(D, "arpa_pretrained_g2p.dict"), "english_us_arpa"),
     "scratch": ("train", os.path.join(D, "arpa_pretrained_g2p.dict"), None),
 }

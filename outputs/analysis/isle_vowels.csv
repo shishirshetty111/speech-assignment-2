@@ -17,6 +17,12 @@ arpa_g2p,_02,115,5000,new,N Y UW1,UW1,240,291,1033
 arpa_g2p,_02,115,5000,no,N OW1,OW1,350,377,847
 arpa_g2p,_03,113,5000,bad,B AE1 D,AE1,220,594,1767
 arpa_g2p,_03,113,5000,bed,B EH1 D,EH1,180,527,1836
+arpa_learner,_01,111,5000,white,W AY1 T,AY1,150,546,1389
+arpa_learner,_01,111,5000,bait,B EY1 T,EY1,200,406,1899
+arpa_learner,_02,115,5000,new,N Y UW1,UW1,230,300,1203
+arpa_learner,_02,115,5000,no,N OW1,OW1,370,327,815
+arpa_learner,_03,113,5000,bad,B EH1 D,EH1,220,594,1767
+arpa_learner,_03,113,5000,bed,B EH1 D,EH1,180,527,1836
 arpa_own_g2p,_01,111,5000,white,W AY1 T,AY1,150,546,1389
 arpa_own_g2p,_01,111,5000,bait,B EY1 T,EY1,200,406,1899
 arpa_own_g2p,_02,115,5000,new,N Y UW1,UW1,230,300,1203

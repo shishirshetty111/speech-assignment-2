@@ -17,6 +17,7 @@ The main output is one TextGrid per file in `outputs/textgrids/arpa_g2p/`. The s
 | 3b | `scripts/evaluate_g2p.py` | Tests the own G2P model and the pretrained one on 2,000 dictionary words the own model never saw (`outputs/analysis/g2p_evaluation.md`). |
 | 4 | `scripts/build_dictionaries.py` | Finds the words missing from the dictionary with `mfa validate` and adds pronunciations: acronyms (WBUR) are spelled out letter by letter, other words come from a G2P model. |
 | 5 | `scripts/align_all.py` | Aligns the corpus with each dictionary and acoustic model combination (below). |
+| 5b | `scripts/learner_variants.py` | Adds the other word's vowel as an alternative pronunciation for the ISLE minimal pairs (bad/bed, white/bait, new/no) and lets the aligner choose (`outputs/analysis/learner_variants.md`). |
 | 6 | `scripts/analyse.py` | Statistics, boundary comparison between models, and vowel measurements with Praat (`outputs/analysis/`). |
 | 7 | `scripts/make_figures.py` | Praat pictures: waveform, spectrogram, word and phone tiers (`outputs/figures/`). |
 
@@ -27,6 +28,7 @@ The main output is one TextGrid per file in `outputs/textgrids/arpa_g2p/`. The s
 | `arpa_baseline` | `english_us_arpa`, missing words left as they are | `english_us_arpa` (pretrained) |
 | `arpa_g2p` (main) | `english_us_arpa` + pretrained G2P for missing words | `english_us_arpa` (pretrained) |
 | `arpa_own_g2p` | `english_us_arpa` + our own G2P for missing words | `english_us_arpa` (pretrained) |
+| `arpa_learner` | as `arpa_g2p` + learner pronunciation variants for the minimal pairs | `english_us_arpa` (pretrained) |
 | `mfa_g2p` | `english_mfa` + pretrained G2P for missing words | `english_mfa` (pretrained, IPA-style phones) |
 | `arpa_adapted` | as `arpa_g2p` | `english_us_arpa` adapted to this data (`mfa adapt`) |
 | `scratch` | as `arpa_g2p` | trained from scratch on these 97 s only (`mfa train`) |

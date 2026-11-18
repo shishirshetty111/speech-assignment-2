@@ -11,6 +11,7 @@ Steps
      evaluate_g2p        own vs pretrained G2P on 2,000 unseen dictionary words
   4. build_dictionaries  base dictionary + pronunciations for missing words
   5. align_all           one TextGrid set per dictionary / acoustic model combination
+     learner_variants    dictionary with learner pronunciations for the ISLE minimal pairs
   6. analyse             statistics and boundary comparison (outputs/analysis)
   7. make_figures        Praat pictures (outputs/figures)
 
@@ -58,6 +59,7 @@ def main():
     if os.path.exists(own_g2p):
         experiments.insert(2, "arpa_own_g2p")
     step("align_all.py", "-j", str(args.jobs), "--only", *experiments)
+    step("learner_variants.py")
     step("analyse.py")
     step("make_figures.py")
     print("\nDone. TextGrids: outputs/textgrids/  analysis: outputs/analysis/  figures: outputs/figures/")

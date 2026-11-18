@@ -9,6 +9,7 @@ Reference for agreement: arpa_g2p. Agreement is not accuracy (no hand-marked bou
 | arpa_adapted | 241 | 1063 | 0 | 34 | 7.67 | 75.8 | 82 | -46.13 | -47.39 |
 | arpa_baseline | 241 | 1022 | 6 | 34 | 7.69 | 78.9 | 78 | -46.86 | -48.54 |
 | arpa_g2p | 241 | 1063 | 0 | 34 | 7.67 | 75.8 | 82 | -46.98 | -48.54 |
+| arpa_learner | 241 | 1063 | 0 | 34 | 7.67 | 75.8 | 84 | -46.97 | -48.55 |
 | arpa_own_g2p | 241 | 1063 | 0 | 34 | 7.67 | 75.8 | 83 | -46.98 | -48.52 |
 | mfa_g2p | 241 | 1030 | 0 | 32 | 7.66 | 82.4 | 120 | -45.51 | -45.84 |
 | scratch | 241 | 1050 | 0 | 81 | 28.57 | 60.3 | 722 |  |  |
@@ -21,6 +22,7 @@ Reference for agreement: arpa_g2p. Agreement is not accuracy (no hand-marked bou
 | arpa_adapted | phones | 1063/1063 | 0.1 | 0.0 | 100.0 | 20 |
 | arpa_baseline | words | 241/241 | 0.7 | 0.0 | 99.2 | 20 |
 | arpa_baseline | phones | 1016/1063 | 0.8 | 0.0 | 99.7 | 660 |
+| arpa_learner | words | 241/241 | 0.1 | 0.0 | 99.8 | 20 |
 | arpa_own_g2p | words | 241/241 | 0.0 | 0.0 | 100.0 | 0 |
 | arpa_own_g2p | phones | 1060/1063 | 0.0 | 0.0 | 100.0 | 10 |
 | mfa_g2p | words | 241/241 | 25.7 | 10.0 | 84.4 | 2460 |

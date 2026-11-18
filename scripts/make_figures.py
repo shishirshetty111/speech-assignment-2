@@ -19,7 +19,7 @@ from common import CORPUS, FIGURES, ROOT, TEXTGRIDS, WORK, praat_executable  # n
 PRAAT = praat_executable()
 MAIN = "arpa_g2p"
 DRAW = os.path.join(ROOT, "scripts", "draw_alignment.praat")
-ORDER = ["arpa_baseline", "arpa_g2p", "arpa_own_g2p", "arpa_adapted", "scratch", "mfa_g2p"]
+ORDER = ["arpa_baseline", "arpa_g2p", "arpa_own_g2p", "arpa_learner", "arpa_adapted", "scratch", "mfa_g2p"]
 
 # (name, file, start, end, title)
 ZOOMS = [

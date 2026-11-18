@@ -3,6 +3,7 @@ arpa_adapted,words,241/241,0.0,0.0,100.0,0
 arpa_adapted,phones,1063/1063,0.1,0.0,100.0,20
 arpa_baseline,words,241/241,0.7,0.0,99.2,20
 arpa_baseline,phones,1016/1063,0.8,0.0,99.7,660
+arpa_learner,words,241/241,0.1,0.0,99.8,20
 arpa_own_g2p,words,241/241,0.0,0.0,100.0,0
 arpa_own_g2p,phones,1060/1063,0.0,0.0,100.0,10
 mfa_g2p,words,241/241,25.7,10.0,84.4,2460
