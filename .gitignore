@@ -1,0 +1,10 @@
+# provided dataset (licensed: BU Radio News Corpus / ISLE) and generated corpus
+/data/raw/
+/data/corpus/
+# MFA temporary files, logs and large trained models
+/work/
+# local notes
+/docs/
+/personal_notes/
+__pycache__/
+*.pyc

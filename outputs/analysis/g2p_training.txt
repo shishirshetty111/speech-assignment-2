@@ -1,0 +1,4 @@
+training data: 50000 of 199860 words of the english_us_arpa dictionary, 10% of them held out
+MFA built-in held-out WER: 100.00 (not reliable, see evaluate_g2p.py)
+MFA built-in held-out PER: 100.00
+training time: 27.8 min (2 jobs, 5 random starts)

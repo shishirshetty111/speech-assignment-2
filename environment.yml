@@ -1,0 +1,8 @@
+# conda env create -f environment.yml   (then: conda activate mfa)
+name: mfa
+channels:
+  - conda-forge
+dependencies:
+  - montreal-forced-aligner=3.4.3
+  - praatio
+  - numpy
