@@ -60,7 +60,7 @@ Everything with one command (in the `mfa` environment):
 
 ```bash
 python run_pipeline.py                      # about 1 h on a laptop CPU, most of it G2P training
-python run_pipeline.py --skip_g2p_training  # about 30 min, leaves out the own-G2P experiment
+python run_pipeline.py --skip_g2p_training  # reuses the trained G2P model in outputs/models/
 ```
 
 Or step by step:

@@ -1,8 +1,8 @@
 """Run the whole forced-alignment pipeline with one command.
 
     python run_pipeline.py                 # everything
-    python run_pipeline.py --skip_g2p_training   # reuse work/models/g2p_own_arpa.zip if present,
-                                                  # otherwise leave out the arpa_own_g2p experiment
+    python run_pipeline.py --skip_g2p_training   # reuse the trained model in outputs/models/
+                                                  # instead of training it again
 
 Steps
   1. prepare_corpus      data/raw -> data/corpus (MFA layout, SPHERE -> WAV, transcript clean-up)
@@ -19,6 +19,7 @@ Run it with the Python of the MFA conda environment (see README).
 """
 import argparse
 import os
+import shutil
 import subprocess
 import sys
 
@@ -48,8 +49,13 @@ def main():
     for kind, name in MODELS:
         run_mfa("model", "download", kind, name, "--ignore_cache")
     own_g2p = os.path.join(WORK, "models", "g2p_own_arpa.zip")
+    saved_g2p = os.path.join(ROOT, "outputs", "models", "g2p_own_arpa.zip")
+    os.makedirs(os.path.dirname(own_g2p), exist_ok=True)
     if not args.skip_g2p_training:
         step("train_g2p.py", "-j", str(args.jobs))
+        shutil.copyfile(own_g2p, saved_g2p)
+    elif not os.path.exists(own_g2p) and os.path.exists(saved_g2p):
+        shutil.copyfile(saved_g2p, own_g2p)  # reuse the trained model kept in the repository
     if os.path.exists(own_g2p):
         step("evaluate_g2p.py")
     variants = ["arpa_pretrained_g2p", "mfa_pretrained_g2p"] + (["arpa_own_g2p"] if os.path.exists(own_g2p) else [])
