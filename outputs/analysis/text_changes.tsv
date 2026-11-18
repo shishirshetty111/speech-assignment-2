@@ -1,10 +1,10 @@
 file	from	to
 F2BJRLP1	whitespace	line breaks / repeated spaces collapsed
 F2BJRLP2	whitespace	line breaks / repeated spaces collapsed
-F2BJRLP2	y- s	y-s  (hyphen split across a space (line-break artefact))
-F2BJRLP2	y- o	y-o  (hyphen split across a space (line-break artefact))
+F2BJRLP2	seventy- six	seventy-six  (hyphen split across a space (line-break artefact))
+F2BJRLP2	seventy- one	seventy-one  (hyphen split across a space (line-break artefact))
 F2BJRLP3	whitespace	line breaks / repeated spaces collapsed
-F2BJRLP3	y- f	y-f  (hyphen split across a space (line-break artefact))
+F2BJRLP3	thirty- five	thirty-five  (hyphen split across a space (line-break artefact))
 ISLE_SESS0131_BLOCKD02_01_sprt1	whitespace	line breaks / repeated spaces collapsed
 ISLE_SESS0131_BLOCKD02_02_sprt1	whitespace	line breaks / repeated spaces collapsed
 ISLE_SESS0131_BLOCKD02_03_sprt1	whitespace	line breaks / repeated spaces collapsed

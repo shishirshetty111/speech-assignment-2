@@ -39,8 +39,9 @@ def edit_distance(a, b):
 def main():
     full = read_dict(base_dict_path("english_us_arpa"))
     train = glob.glob(os.path.join(WORK, "dicts", "g2p_train_*.dict"))
-    if not train:
-        sys.exit("run scripts/train_g2p.py first")
+    if not train:  # rebuild the same fixed training sample (seed 0) when training was skipped
+        from train_g2p import subset_dictionary
+        train = [subset_dictionary(50000)[0]]
     seen = set(read_dict(train[0]))
     # plain alphabetic words only, so the test is about spelling, not punctuation
     unseen = sorted(w for w in full if w not in seen and w.isalpha())
