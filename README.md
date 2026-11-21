@@ -28,6 +28,7 @@ Extra test, trained on one speaker and tested on the other (harder):
 | speech, log-mel | 41.3% ± 3.7 | 34.0% ± 4.9 | 37.7% |
 | fusion, concatenation | 52.7% ± 8.5 | 38.0% ± 2.8 | 45.3% |
 | fusion, gated | 56.6% ± 12.8 | 47.8% ± 8.0 | 52.2% |
+| linear baseline (WavLM average + logistic regression) | 74.8% | 65.7% | 70.2% |
 
 All tables and plots are in [`Results/`](Results/).
 
@@ -45,6 +46,7 @@ models/fusion_pipeline/            train.py, test.py
 experiments/cross_speaker.py       train on one speaker, test on the other
 experiments/fusion_reliance.py     how much the fusion models use each modality
 experiments/prosody_stats.py       pitch and duration per emotion (used in the analysis)
+experiments/linear_baseline.py     WavLM average + logistic regression, same test sets
 colab_train.ipynb                  main training run on a Colab GPU
 colab_cross_speaker.ipynb          cross-speaker and fusion reliance run on a Colab GPU
 Results/                           accuracy tables, predictions, plots
@@ -83,6 +85,7 @@ python models/fusion_pipeline/test.py
 python experiments/cross_speaker.py
 python experiments/fusion_reliance.py
 python experiments/prosody_stats.py
+python experiments/linear_baseline.py
 ```
 
 Each `train.py` accepts `--seeds 0` for a quick single-seed run. Training uses a GPU when one is
