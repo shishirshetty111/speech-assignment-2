@@ -1,0 +1,13 @@
+/data/raw/
+/data/processed/
+/features/
+/.venv/
+/docs/
+/personal_notes/
+*.log
+__pycache__/
+/colab_package.zip
+/colab_code_v2.zip
+/colab_results/
+/colab_results_2/
+/checkpoints/

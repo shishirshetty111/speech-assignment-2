@@ -1,0 +1,2 @@
+variant,angry,disgust,fear,happy,neutral,surprise,sad
+text_bert,0.0,0.2,0.2,0.4,0.2,0.0,0.0

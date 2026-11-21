@@ -1,0 +1,24 @@
+"""Train the fusion pipeline (speech + text: both encoders, concatenation or gated fusion, classifier).
+
+    python models/fusion_pipeline/train.py                # all variants, seeds 0-4
+    python models/fusion_pipeline/train.py --seeds 0      # one seed only (quick check)
+
+Checkpoints: checkpoints/<variant>_seed<n>.pt (best validation accuracy).
+"""
+import argparse
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from src.pipeline import SEEDS, train  # noqa: E402
+
+VARIANTS = ["fusion_concat", "fusion_gated"]
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--variants", nargs="*", default=VARIANTS, choices=VARIANTS)
+    ap.add_argument("--seeds", nargs="*", type=int, default=SEEDS)
+    args = ap.parse_args()
+    for v in args.variants:
+        for s in args.seeds:
+            train(v, s)

@@ -1,0 +1,10 @@
+# Tested with Python 3.14 on Windows, CPU only.
+# CPU build of PyTorch: pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0
+transformers==5.23.0
+scikit-learn==1.9.1
+librosa==1.0.1
+soundfile==0.14.0
+pandas==3.1.1
+numpy==2.5.5
+matplotlib==3.11.2

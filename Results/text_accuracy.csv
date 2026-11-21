@@ -1,0 +1,2 @@
+variant,test accuracy (mean),test accuracy (std),macro F1 (mean),validation accuracy (mean),test accuracy per seed,"silhouette (block output, seed 0)"
+text_bert,0.14285714285714285,0.0,0.03571428571428571,0.14285714285714285,0.143 0.143 0.143 0.143 0.143,-0.01666666
