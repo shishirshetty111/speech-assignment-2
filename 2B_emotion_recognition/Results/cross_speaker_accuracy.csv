@@ -1,0 +1,5 @@
+variant,OAF->YAF,YAF->OAF,both directions
+speech_wavlm,57.4% ± 10.0,45.5% ± 5.8,51.5%
+speech_logmel,41.3% ± 3.7,34.0% ± 4.9,37.7%
+fusion_concat,52.7% ± 8.5,38.0% ± 2.8,45.3%
+fusion_gated,56.6% ± 12.8,47.8% ± 8.0,52.2%
