@@ -88,19 +88,26 @@ python experiments/prosody_stats.py
 python experiments/linear_baseline.py
 ```
 
-Each `train.py` accepts `--seeds 0` for a quick single-seed run. Training uses a GPU when one is
-available. Feature extraction ran on a CPU; training of all variants and seeds ran
-on a Colab T4 GPU (the two notebooks show the exact steps). For Colab, run the two preprocessing
-scripts locally, zip the repository together with `features/` and `data/manifest.csv` as
-`colab_package.zip`, and upload it to `MyDrive/emotion_2b/`. The second notebook also expects
-`colab_results.zip` (written by the first notebook) and a zip of the updated code
-(`colab_code_v2.zip`, here simply the current `src/`, `models/` and `experiments/` folders). All splits and seeds are fixed, so the
-same commands reproduce the same split and very close numbers (GPU kernels are not bit-exact).
+Trained checkpoints are not included, so run each `train.py` before its `test.py`. For a quick
+single-seed run, add `--seeds 0` to both `train.py` and `test.py`. Training uses a GPU when one is available.
+
+Feature extraction ran on a CPU; training of all variants and seeds ran on a Colab T4 GPU (the two
+notebooks show the exact steps). For Colab:
+
+1. Run the two preprocessing scripts locally.
+2. Zip this folder together with `features/` and `data/manifest.csv` as `colab_package.zip` and
+   upload it to `MyDrive/emotion_2b/`.
+3. Run `colab_train.ipynb`. It writes `colab_results.zip` to the same Drive folder.
+4. Zip the `src/`, `models/` and `experiments/` folders as `colab_code_v2.zip`, upload it, and run
+   `colab_cross_speaker.ipynb`.
+
+The split and seeds are fixed, so the same commands give the same split and very close numbers (GPU
+kernels are not bit-exact).
 
 ## Notes
 
 - Split: words, not files, are divided into train / validation / test (140 / 30 / 30 words, seed 0).
   Every word is spoken by both speakers in all 7 emotions, so a file-level split would put the same
   word in training and testing.
-- Model selection uses only the validation words. The test words are used once, by `test.py`.
+- All model choices (early stopping, WavLM layer) use only the validation words, never the test words.
 - The text input is the fixed TESS sentence. No emotion words are added to the text.

@@ -1,4 +1,5 @@
 """Test-set evaluation, tables and plots for one pipeline (called by models/*/test.py)."""
+import argparse
 import os
 
 import matplotlib
@@ -20,39 +21,44 @@ COLORS = ["#d62728", "#8c564b", "#9467bd", "#ff7f0e", "#7f7f7f", "#17becf", "#1f
 
 
 def test_pipeline(name, variants):
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--seeds", nargs="*", type=int, default=SEEDS,
+                    help="seeds to test (must match the seeds trained with train.py)")
+    seeds = ap.parse_args().seeds
     os.makedirs(PLOTS, exist_ok=True)
     df = manifest()
     rows, per_emotion, preds = [], [], None
     for v in variants:
-        runs = [evaluate(v, s, df) for s in SEEDS]
+        runs = [evaluate(v, s, df) for s in seeds]
         accs = [r["acc"] for r in runs]
         f1s = [f1_score(r["y"], r["pred"], average="macro") for r in runs]
-        vals = [load(v, s)[1]["best_val_acc"] for s in SEEDS]
+        vals = [load(v, s)[1]["best_val_acc"] for s in seeds]
         rows.append({"variant": v, "test accuracy (mean)": np.mean(accs), "test accuracy (std)": np.std(accs),
                      "macro F1 (mean)": np.mean(f1s), "validation accuracy (mean)": np.mean(vals),
                      "test accuracy per seed": " ".join("%.3f" % a for a in accs)})
         cm = sum(confusion_matrix(r["y"], r["pred"], labels=range(len(EMOTIONS))) for r in runs)
         recall = cm.diagonal() / cm.sum(1)
         per_emotion.append({"variant": v, **{SHORT[e]: recall[i] for i, e in enumerate(EMOTIONS)}})
-        plot_confusion(cm, v)
-        plot_history(v)
-        rows[-1]["silhouette (block output, seed 0)"] = plot_tsne(runs[0], v, df)
+        plot_confusion(cm, v, title="%s: test confusion (%%, %d seeds)" % (v, len(seeds)))
+        plot_history(v, seeds[0])
+        rows[-1]["silhouette (block output, seed %d)" % seeds[0]] = plot_tsne(runs[0], v, df)
         p = pd.DataFrame({"file": runs[0]["file"], "true": [EMOTIONS[i] for i in runs[0]["y"]]})
-        for s, r in zip(SEEDS, runs):
+        for s, r in zip(seeds, runs):
             p["%s_seed%d" % (v, s)] = [EMOTIONS[i] for i in r["pred"]]
-        p["%s_confidence_seed0" % v] = runs[0]["prob"].max(1).round(3)
+        p["%s_confidence_seed%d" % (v, seeds[0])] = runs[0]["prob"].max(1).round(3)
         preds = p if preds is None else preds.merge(p.drop(columns="true"), on="file")
     table = pd.DataFrame(rows)
     table.to_csv(os.path.join(RESULTS, "%s_accuracy.csv" % name), index=False)
     pd.DataFrame(per_emotion).to_csv(os.path.join(RESULTS, "%s_per_emotion_recall.csv" % name), index=False)
     preds.to_csv(os.path.join(RESULTS, "%s_test_predictions.csv" % name), index=False)
-    md = ["| Variant | Test accuracy (mean ± std, 5 seeds) | Macro F1 | Validation accuracy | Silhouette |",
-          "|---|---|---|---|---|"]
+    md = ["| Variant | Test accuracy (mean ± std, %d seeds) | Macro F1 | Validation accuracy | Silhouette |"
+          % len(seeds), "|---|---|---|---|---|"]
     for r in rows:
         md.append("| %s | %.1f%% ± %.1f | %.3f | %.1f%% | %.2f |" % (
             r["variant"], 100 * r["test accuracy (mean)"], 100 * r["test accuracy (std)"], r["macro F1 (mean)"],
-            100 * r["validation accuracy (mean)"], r["silhouette (block output, seed 0)"]))
-    md += ["", "Recall per emotion (share of each emotion's test files classified correctly, all 5 seeds):", "",
+            100 * r["validation accuracy (mean)"], r["silhouette (block output, seed %d)" % seeds[0]]))
+    md += ["", "Recall per emotion (share of each emotion's test files classified correctly, %s):"
+           % ("all %d seeds" % len(seeds) if len(seeds) > 1 else "seed %d" % seeds[0]), "",
            "| Variant | " + " | ".join(SHORT[e] for e in EMOTIONS) + " |", "|---" * (len(EMOTIONS) + 1) + "|"]
     for r in per_emotion:
         md.append("| %s | " % r["variant"] + " | ".join("%.0f%%" % (100 * r[SHORT[e]]) for e in EMOTIONS) + " |")
@@ -84,8 +90,8 @@ def plot_confusion(cm, variant, name=None, title=None):
     plt.close(fig)
 
 
-def plot_history(variant):
-    h = pd.DataFrame(load(variant, 0)[1]["history"])
+def plot_history(variant, seed=0):
+    h = pd.DataFrame(load(variant, seed)[1]["history"])
     fig, (a, b) = plt.subplots(1, 2, figsize=(8, 3.2))
     a.plot(h.epoch, h.train_loss, label="train")
     a.plot(h.epoch, h.val_loss, label="validation")
@@ -96,7 +102,7 @@ def plot_history(variant):
     for ax in (a, b):
         ax.set_xlabel("epoch")
         ax.legend()
-    fig.suptitle("%s, seed 0" % variant, fontsize=10)
+    fig.suptitle("%s, seed %d" % (variant, seed), fontsize=10)
     fig.tight_layout()
     fig.savefig(os.path.join(PLOTS, "training_%s.png" % variant), dpi=150)
     plt.close(fig)
