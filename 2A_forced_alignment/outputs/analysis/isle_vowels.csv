@@ -1,0 +1,43 @@
+experiment,file,median_F0_Hz,ceiling_Hz,word,phones,vowel,vowel_ms,F1_Hz,F2_Hz
+arpa_adapted,_01,111,5000,white,W AY1 T,AY1,150,546,1389
+arpa_adapted,_01,111,5000,bait,B EY1 T,EY1,200,406,1899
+arpa_adapted,_02,115,5000,new,N Y UW1,UW1,230,300,1203
+arpa_adapted,_02,115,5000,no,N OW1,OW1,350,377,847
+arpa_adapted,_03,113,5000,bad,B AE1 D,AE1,220,594,1767
+arpa_adapted,_03,113,5000,bed,B EH1 D,EH1,180,527,1836
+arpa_baseline,_01,111,5000,white,W AY1 T,AY1,150,546,1389
+arpa_baseline,_01,111,5000,bait,B EY1 T,EY1,200,406,1899
+arpa_baseline,_02,115,5000,new,N Y UW1,UW1,240,291,1033
+arpa_baseline,_02,115,5000,no,N OW1,OW1,350,377,847
+arpa_baseline,_03,113,5000,bad,B AE1 D,AE1,220,594,1767
+arpa_baseline,_03,113,5000,bed,B EH1 D,EH1,190,534,1871
+arpa_g2p,_01,111,5000,white,W AY1 T,AY1,150,546,1389
+arpa_g2p,_01,111,5000,bait,B EY1 T,EY1,200,406,1899
+arpa_g2p,_02,115,5000,new,N Y UW1,UW1,240,291,1033
+arpa_g2p,_02,115,5000,no,N OW1,OW1,350,377,847
+arpa_g2p,_03,113,5000,bad,B AE1 D,AE1,220,594,1767
+arpa_g2p,_03,113,5000,bed,B EH1 D,EH1,180,527,1836
+arpa_learner,_01,111,5000,white,W AY1 T,AY1,150,546,1389
+arpa_learner,_01,111,5000,bait,B EY1 T,EY1,200,406,1899
+arpa_learner,_02,115,5000,new,N Y UW1,UW1,230,300,1203
+arpa_learner,_02,115,5000,no,N OW1,OW1,370,327,815
+arpa_learner,_03,113,5000,bad,B EH1 D,EH1,220,594,1767
+arpa_learner,_03,113,5000,bed,B EH1 D,EH1,180,527,1836
+arpa_own_g2p,_01,111,5000,white,W AY1 T,AY1,150,546,1389
+arpa_own_g2p,_01,111,5000,bait,B EY1 T,EY1,200,406,1899
+arpa_own_g2p,_02,115,5000,new,N Y UW1,UW1,230,300,1203
+arpa_own_g2p,_02,115,5000,no,N OW1,OW1,350,377,847
+arpa_own_g2p,_03,113,5000,bad,B AE1 D,AE1,220,594,1767
+arpa_own_g2p,_03,113,5000,bed,B EH1 D,EH1,180,527,1836
+mfa_g2p,_01,111,5000,white,ʋ aj ʈ,aj,190,581,1324
+mfa_g2p,_01,111,5000,bait,b e t,e,200,406,1899
+mfa_g2p,_02,115,5000,new,ɲ uː,uː,250,290,1446
+mfa_g2p,_02,115,5000,no,n əw,əw,380,323,817
+mfa_g2p,_03,113,5000,bad,b a d,a,230,608,1763
+mfa_g2p,_03,113,5000,bed,b ɛ d,ɛ,190,534,1871
+scratch,_01,111,5000,white,W AY1,AY1,10,766,1715
+scratch,_01,111,5000,bait,B EY1,EY1,5,--undefined--,--undefined--
+scratch,_02,115,5000,new,N Y UW1,UW1,10,364,1517
+scratch,_02,115,5000,no,N OW1,OW1,5,--undefined--,--undefined--
+scratch,_03,113,5000,bad,B AE1 D,AE1,230,1261,2186
+scratch,_03,113,5000,bed,B EH1,EH1,10,--undefined--,--undefined--
